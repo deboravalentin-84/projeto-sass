@@ -1,0 +1,58 @@
+@use 'variables';
+@use 'mixins';
+
+section {
+  padding: 56px 0;
+
+  .products {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(3, 32.66%);
+    column-gap: 1%;
+    row-gap: 4%;
+    width: 100%;
+
+    .product-item {
+      img {
+        width: 100%;
+        border-radius: variables.$border-radius;
+      }
+
+      .product-button {
+        display: block;
+        background-color: variables.$secondary-color;
+        color: variables.$text-color;
+        text-align: center;
+        padding: 8px 0;
+        border-radius: 8px;
+        margin-top: 8px;
+        text-decoration: none;
+
+        &:hover {
+          background-color: variables.$secondary-hover;
+        }
+      }
+    }
+  }
+
+  @include mixins.respond(tablet) {
+    .container {
+      max-width: 80%;
+    }
+
+    .products {
+      grid-template-columns: repeat(2, 48.5%);
+      column-gap: 3%;
+    }
+  }
+
+  @include mixins.respond(mobile) {
+    .products {
+      display: block;
+
+      .product-item {
+        margin-bottom: 32px;
+      }
+    }
+  }
+}
